@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class Model {
     private static JFrame frame;
     static int conset;
-    private final String url = "jdbc:postgresql://localhost:5432/login_details";
+    private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
     private final String user = "postgres";
     private final String password = "postgres";
     Connection conn = null;
@@ -132,7 +132,8 @@ public class Model {
         }
         int login_validated=main_login(username, password);
         switch (login_validated) {
-            case 1:               
+            case 1:
+                new Task_CRUD().setVisible(true);
             case 2:
                 x.jLabel3.setText("Wrong password for given username");
                 break;
@@ -157,8 +158,7 @@ public class Model {
             int temp=create_account(username,pas1, email);
             if(temp==1)
             {
-//                
-                
+                new Task_CRUD().setVisible(true);
             }
             else if(temp==2)
             {
