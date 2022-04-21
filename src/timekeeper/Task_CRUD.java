@@ -13,7 +13,9 @@ public class Task_CRUD extends javax.swing.JFrame {
     /**
      * Creates new form Task_CRUD
      */
-    public Task_CRUD() {
+    String name;
+    public Task_CRUD(String name) {
+        this.name = name;
         initComponents();
         this.setVisible(true);
     }
@@ -158,6 +160,8 @@ public class Task_CRUD extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        Update_Task update_Task = new Update_Task(name);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
