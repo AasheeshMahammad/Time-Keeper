@@ -58,6 +58,11 @@ public class Insert_tasks extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(233, 213, 218));
         jLabel3.setText("Enter  Priority");
+        jLabel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel3MouseMoved(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
@@ -73,11 +78,21 @@ public class Insert_tasks extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(233, 213, 218));
         jLabel5.setText("Enter Start Date ");
+        jLabel5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel5MouseMoved(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(233, 213, 218));
         jLabel6.setText("Enter End Date");
+        jLabel6.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jLabel6MouseMoved(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Magneto", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(233, 213, 218));
@@ -209,8 +224,23 @@ public class Insert_tasks extends javax.swing.JFrame {
 
     private void jLabel4MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseMoved
         // TODO add your handling code here:
-        jLabel7.setText("Date Entered Has to be in form of YYYY-MM-DD");        
+        jLabel7.setText("Time needed in hrs is time needed for completion");        
     }//GEN-LAST:event_jLabel4MouseMoved
+
+    private void jLabel3MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseMoved
+        // TODO add your handling code here:
+        jLabel7.setText("Enter the priority in terms of high low medium");
+    }//GEN-LAST:event_jLabel3MouseMoved
+
+    private void jLabel5MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseMoved
+        // TODO add your handling code here:
+        jLabel7.setText("Date Entered Has to be in form of YYYY-MM-DD");     
+    }//GEN-LAST:event_jLabel5MouseMoved
+
+    private void jLabel6MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseMoved
+        // TODO add your handling code here:
+        jLabel7.setText("Date Entered Has to be in form of YYYY-MM-DD"); 
+    }//GEN-LAST:event_jLabel6MouseMoved
 
     /**
      * @param args the command line arguments
