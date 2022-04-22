@@ -8,7 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 public class Model {
+    String usernames;
     private static JFrame frame;
     static int conset;
     private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
@@ -133,6 +135,7 @@ public class Model {
         int login_validated=main_login(username, password);
         switch (login_validated) {
             case 1:
+                usernames=username;
                 new Task_CRUD().setVisible(true);
             case 2:
                 x.jLabel3.setText("Wrong password for given username");
@@ -141,6 +144,7 @@ public class Model {
                 x.jLabel3.setText("No user with this username exists");
                 break;
         }
+        x.close();
     }
     public void signupfinalclicked(SignUp x)
     {
@@ -158,7 +162,9 @@ public class Model {
             int temp=create_account(username,pas1, email);
             if(temp==1)
             {
+                usernames=username;
                 new Task_CRUD().setVisible(true);
+                x.close();
             }
             else if(temp==2)
             {
@@ -170,6 +176,43 @@ public class Model {
         {
             x.jLabel1.setText("Passwords dont match");
         }
-    }    
+    }
+    public void inserttaskclick(Task_CRUD x)
+    {        
+        new Insert_tasks().setVisible(true);       
+        //x.close();
+    }
+    public void inserttask(Insert_tasks x)
+    {
+        if(conset==0)
+        {
+            connect();
+            conset=1;
+        }
+        String us="'"+usernames+"'";
+        String task_name="'"+x.jTextField1.getText()+"'";
+        String priority="'"+x.jTextField2.getText()+"'";
+        String time_needed="'"+x.jTextField3.getText()+"'";
+        String start_date="'"+x.jTextField4.getText()+"'";
+        String end_date="'"+x.jTextField5.getText()+"'";
+        System.out.println("username is "+usernames);
+        Statement stmt;
+        try {
+            stmt = conn.createStatement();            
+            stmt.executeUpdate("insert into tasks(username,task_name,priority,time_needed_more,start_date,end_date) values("+usernames+","+task_name+","+priority+","+time_needed+","+start_date+","+end_date+")");
+            System.out.println("Insertion to tasks succesful");
+            x.jTextField1.setText("");
+            x.jTextField2.setText("");
+            x.jTextField3.setText("");
+            x.jTextField4.setText("");
+            x.jTextField5.setText("");
+            x.jLabel7.setText("Task has been inserted");
+            
+        }catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());            
+        }             
+        
+    }
     
 }

@@ -31,5 +31,14 @@ public class Controller {
     {
         model.signupfinalclicked(x);
     }
+    public static void inserttaskclicked(Task_CRUD x)
+    {
+        model.inserttaskclick(x);
+    }
+    public static void inserttask(Insert_tasks x)
+    {
+        model.inserttask(x);
+    }
+    
     
  }
