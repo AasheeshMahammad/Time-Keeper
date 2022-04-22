@@ -2,7 +2,7 @@ create database timekeeper;
 \c timekeeper
 #size of each form 1090,620
 #Panel Background is [2,9,67]
-# Heading of each view use font Papyrus size 36 bold
+# Heading of each view use font Papyrus size 36 bold with color [255,255,0]
 #button background-->[60,59,166]
 #button font Papyrus size 24 bold
 #Lablel font Monotype Corsiva size 24 bold
