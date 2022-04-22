@@ -1,4 +1,8 @@
 package timekeeper;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Controller {
     private static Model model;
     private static First_Page view;    
@@ -53,5 +57,29 @@ public class Controller {
     {
         model.inserttocrud(x);
     }
-    
+    public static void logout(Task_CRUD x)
+    {
+        model.logout(x);
+    }
+    public static void profiletocrud(Profile x)
+    {
+        model.profiletocrud(x);
+    }
+    public static void viewall(Task_CRUD x) throws SQLException
+    {
+        model.viewall(x);
+    }
+    public static void viewtocrud(View_all x)
+    {
+        model.viewtocrud(x);
+    }
+    public static void viewprofile(Task_CRUD x)
+    {
+        model.viewprofile(x);
+    }
+    public static ArrayList <Data> show(View_all x) throws SQLException
+    {
+        return model.show(x);
+//        model.putinto(x);
+    }
  }

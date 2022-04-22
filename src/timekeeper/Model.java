@@ -4,10 +4,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Model {
     String usernames;
@@ -16,6 +18,7 @@ public class Model {
     private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
     private final String user = "postgres";
     private final String password = "postgres";
+    
     Connection conn = null;
     public void connect() {
         
@@ -290,5 +293,75 @@ public class Model {
         new Task_CRUD().setVisible(true);
         x.close();
     }
-    
+    public void profiletocrud(Profile x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+    }
+    public void logout(Task_CRUD x)
+    {
+        Model.frame=new JFrame("Exit");
+        if(JOptionPane.showConfirmDialog(frame,"Confirm if you want to Logout","Timekeeper",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_OPTION)
+        {
+            System.exit(0);
+        }
+        x.close();
+        System.out.println("Thanks for using time keeper");
+        
+    }
+    public void viewall(Task_CRUD x) throws SQLException
+    {
+        new View_all().dos();
+        x.close();
+    }
+    public void viewtocrud(View_all x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+        
+    }
+    public ArrayList <Data> show(View_all x) throws SQLException
+    {
+        ArrayList<Data> datalist=new ArrayList<>();
+        if(conset==0)
+        {
+            connect();
+            conset=1;
+        }
+        String query="SELECT * FROM TASKS where username="+usernames;
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        Data data;        
+        while(rs.next())
+        {
+            data=new Data(rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
+            datalist.add(data);
+        }
+        
+        return datalist;
+    }
+    public void putinto(View_all x) throws SQLException
+    {
+        ArrayList<Data> datalist=show(x);
+        System.out.println(datalist.get(0).gettime());
+        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
+        Object [] row=new Object[5];
+        for(int i=0;i<datalist.size();i++)
+        {
+            System.out.println("Ji");
+            row[0]=datalist.get(i).gettime();
+            row[1]=datalist.get(i).getname();
+            row[2]=datalist.get(i).getpriority();
+            row[3]=datalist.get(i).getstart();
+            row[4]=datalist.get(i).getend();
+            modeltable.addRow(row);
+            
+        }
+    }
+    public void viewprofile(Task_CRUD x)
+    {
+        new Profile(usernames).setVisible(true);
+        x.close();
+    }
 }

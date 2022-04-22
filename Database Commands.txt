@@ -4,7 +4,7 @@
 #button background-->[77,76,125]
 #button font Uberlin 24 bold [233,213,218]
 #Lablel font UBERLIN 24 Bold [233,213,218]
-#text fields  text Uberlin 12 Bold [255,255,0]
+#text fields  text Uberlin 18 Bold [255,255,0]
 #text fields background [130,115,151]
 #image color E9D5DA
 #image size 50*50
