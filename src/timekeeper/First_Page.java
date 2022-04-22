@@ -37,12 +37,13 @@ public class First_Page extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(54, 48, 98));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton2.setBackground(new java.awt.Color(0, 51, 51));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 255, 204));
+        jButton2.setBackground(new java.awt.Color(77, 76, 125));
+        jButton2.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(233, 213, 218));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-login-50.png"))); // NOI18N
         jButton2.setText("Login");
         jButton2.setBorderPainted(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,22 +57,23 @@ public class First_Page extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 102));
+        jLabel1.setFont(new java.awt.Font("Uberlin", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(233, 213, 218));
         jLabel1.setText("Time Keeper");
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 255, 204));
+        jLabel2.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(233, 213, 218));
         jLabel2.setText("     Wanna Login or SignUp?? ");
 
-        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 255, 204));
+        jLabel3.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(233, 213, 218));
         jLabel3.setText("     Click over the Text below");
 
-        jButton3.setBackground(new java.awt.Color(0, 51, 51));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 255, 204));
+        jButton3.setBackground(new java.awt.Color(77, 76, 125));
+        jButton3.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(233, 213, 218));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-signup-50.png"))); // NOI18N
         jButton3.setText("SignUp");
         jButton3.setBorderPainted(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -88,33 +90,31 @@ public class First_Page extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(37, 37, 37))
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
+                .addContainerGap(401, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(154, 154, 154))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(192, 192, 192))))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(297, 297, 297))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addGap(64, 64, 64)
+                .addGap(72, 72, 72)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 269, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -122,7 +122,7 @@ public class First_Page extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -136,6 +136,7 @@ public class First_Page extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
