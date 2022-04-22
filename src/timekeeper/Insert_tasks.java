@@ -83,8 +83,9 @@ public class Insert_tasks extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(233, 213, 218));
 
         jButton1.setBackground(new java.awt.Color(54, 48, 98));
-        jButton1.setFont(new java.awt.Font("Papyrus", 1, 36)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(233, 213, 218));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-insert-row-50.png"))); // NOI18N
         jButton1.setText("Insert");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,24 +93,24 @@ public class Insert_tasks extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(2, 9, 67));
-        jTextField1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 0));
+        jTextField1.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField1.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(233, 213, 218));
 
-        jTextField2.setBackground(new java.awt.Color(2, 9, 67));
-        jTextField2.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
+        jTextField2.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField2.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 0));
 
-        jTextField3.setBackground(new java.awt.Color(2, 9, 67));
-        jTextField3.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
+        jTextField3.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField3.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 0));
 
-        jTextField4.setBackground(new java.awt.Color(2, 9, 67));
-        jTextField4.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
+        jTextField4.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField4.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 0));
 
-        jTextField5.setBackground(new java.awt.Color(2, 9, 67));
-        jTextField5.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
+        jTextField5.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField5.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -142,19 +143,19 @@ public class Insert_tasks extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(338, 338, 338)
-                        .addComponent(jButton1))
+                        .addGap(370, 370, 370)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(355, 355, 355)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(382, 382, 382)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,9 +177,9 @@ public class Insert_tasks extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
