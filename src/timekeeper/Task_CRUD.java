@@ -43,7 +43,7 @@ public class Task_CRUD extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 720));
@@ -105,8 +105,8 @@ public class Task_CRUD extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(77, 76, 125));
         jButton5.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton5.setForeground(new java.awt.Color(233, 213, 218));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-back-50.png"))); // NOI18N
-        jButton5.setText("Back");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-logout-50.png"))); // NOI18N
+        jButton5.setText("Logout");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -141,9 +141,9 @@ public class Task_CRUD extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addGap(61, 61, 61)

@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
 public class Model {
     String usernames;
     private static JFrame frame;
-    static int conset;
+    static int conset=0;
     private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
     private final String user = "postgres";
-    private final String password = "5767";
+    private final String password = "postgres";
     Connection conn = null;
     public void connect() {
         
@@ -23,6 +23,7 @@ public class Model {
             conn = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
+            System.out.println("Not set");
             System.out.println(e.getMessage());
         }
     }
@@ -180,7 +181,7 @@ public class Model {
     public void inserttaskclick(Task_CRUD x)
     {        
         new Insert_tasks().setVisible(true);       
-        //x.close();
+        x.close();
     }
     public void inserttask(Insert_tasks x)
     {
@@ -283,6 +284,11 @@ public class Model {
         }
         String[] res = {em1,em2};
         return res;
+    }
+    public void inserttocrud(Insert_tasks x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
     }
     
 }

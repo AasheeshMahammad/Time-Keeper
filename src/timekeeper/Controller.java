@@ -49,5 +49,9 @@ public class Controller {
     {
         model.updateProfile(username, email, password);
     }
+    public static void inserttocrud(Insert_tasks x)
+    {
+        model.inserttocrud(x);
+    }
     
  }
