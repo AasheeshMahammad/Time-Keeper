@@ -76,10 +76,12 @@ public class Profile extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField1.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 0));
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(130, 115, 151));
+        jTextField2.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 0));
 
         jButton1.setBackground(new java.awt.Color(77, 76, 125));
@@ -107,6 +109,7 @@ public class Profile extends javax.swing.JFrame {
 
         jPasswordField1.setEditable(false);
         jPasswordField1.setBackground(new java.awt.Color(130, 115, 151));
+        jPasswordField1.setFont(new java.awt.Font("Uberlin", 1, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 0));
 
         jLabel4.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
@@ -141,14 +144,14 @@ public class Profile extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(445, 445, 445)
                                 .addComponent(jLabel1)))))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))

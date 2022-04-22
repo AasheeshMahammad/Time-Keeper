@@ -50,15 +50,15 @@ public class Task_CRUD extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1080, 720));
 
-        jPanel1.setBackground(new java.awt.Color(2, 9, 67));
+        jPanel1.setBackground(new java.awt.Color(54, 48, 98));
 
-        jLabel1.setFont(new java.awt.Font("Papyrus", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setFont(new java.awt.Font("Uberlin", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(233, 213, 218));
         jLabel1.setText("TASK CRUD");
 
-        jButton1.setBackground(new java.awt.Color(60, 59, 166));
-        jButton1.setFont(new java.awt.Font("Papyrus", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 0));
+        jButton1.setBackground(new java.awt.Color(77, 76, 125));
+        jButton1.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(233, 213, 218));
         jButton1.setText("Insert");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,13 +66,13 @@ public class Task_CRUD extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(233, 213, 218));
         jLabel2.setText("Any Changes you wanna make to your task do it here!!! :)");
 
-        jButton2.setBackground(new java.awt.Color(60, 59, 166));
-        jButton2.setFont(new java.awt.Font("Papyrus", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 0));
+        jButton2.setBackground(new java.awt.Color(77, 76, 125));
+        jButton2.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(233, 213, 218));
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,9 +80,9 @@ public class Task_CRUD extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(60, 59, 166));
-        jButton3.setFont(new java.awt.Font("Papyrus", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 0));
+        jButton3.setBackground(new java.awt.Color(77, 76, 125));
+        jButton3.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(233, 213, 218));
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,9 +90,9 @@ public class Task_CRUD extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(60, 59, 166));
-        jButton4.setFont(new java.awt.Font("Papyrus", 1, 24)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 0));
+        jButton4.setBackground(new java.awt.Color(77, 76, 125));
+        jButton4.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(233, 213, 218));
         jButton4.setText("View All");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +100,9 @@ public class Task_CRUD extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(77, 76, 125));
+        jButton5.setFont(new java.awt.Font("Uberlin", 0, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(233, 213, 218));
         jButton5.setText("Back");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,10 +120,10 @@ public class Task_CRUD extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4))
+                .addContainerGap(446, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -128,8 +131,8 @@ public class Task_CRUD extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addGap(55, 55, 55))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(236, 236, 236))))
+                        .addComponent(jLabel2)
+                        .addGap(176, 176, 176))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,9 +141,9 @@ public class Task_CRUD extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jButton5))
-                .addGap(52, 52, 52)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addGap(49, 49, 49)
+                .addGap(61, 61, 61)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +151,7 @@ public class Task_CRUD extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,7 +161,7 @@ public class Task_CRUD extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
