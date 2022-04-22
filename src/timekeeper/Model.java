@@ -15,7 +15,7 @@ public class Model {
     static int conset;
     private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
     private final String user = "postgres";
-    private final String password = "postgres";
+    private final String password = "5767";
     Connection conn = null;
     public void connect() {
         
@@ -208,11 +208,81 @@ public class Model {
             x.jTextField5.setText("");
             x.jLabel7.setText("Task has been inserted");
             
-        }catch(SQLException ex)
+        }
+        catch(SQLException ex)
         {
             System.out.println(ex.getMessage());            
-        }             
+        }    
+    }         
         
+
+    public int updateProfile(String us ,String email, String pwd){
+//        if(conset==0)
+//        {
+//            connect();
+//            conset=1;
+//        }
+        if(conn==null)connect();
+        Statement stmt;
+        try 
+        {
+            stmt = conn.createStatement();            
+            stmt.executeUpdate("update login set email = '"+email+"' , password = '"+pwd+"' where username = '"+us+"';");
+            System.out.println("Updated profile succesfully");
+            return 1;
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
+    }
+    
+//    public int saveProfile(String us ,String email, String pwd)
+//    {
+//        
+//    
+//    }
+    
+//    public void loadProfile(String username)
+//    {
+//        if(conset==0)
+//        {
+//            connect();
+//            conset=1;
+//        }
+//    }
+    public String[] getemailpassword(String us) {
+//        if(conset==0)
+//        {
+//            connect();
+//            conset=1;
+//        }
+        if(conn==null)connect();
+        Statement stmt;
+        String em1 = null;
+        String em2 = null;
+        try 
+        {
+            stmt = conn.createStatement();            
+            ResultSet rs = stmt.executeQuery("select * from login where username='"+us+"';");
+//            System.out.println(rs);
+//            System.out.println("Updated profile succesfully");
+            while (rs.next())
+            {
+                if(rs.getString("username").equals(us)){
+                    em1 = rs.getString("email");
+                    em2 = rs.getString("password");
+                }
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex.getMessage());
+            
+        }
+        String[] res = {em1,em2};
+        return res;
     }
     
 }
