@@ -31,5 +31,14 @@ public class Controller {
     {
         model.signupfinalclicked(x);
     }
+    public static String[] loadProfile(String username)
+    {
+        return model.getemailpassword(username);
+    }
+    
+    public static void updateProfile(String username, String email, String password)
+    {
+        model.updateProfile(username, email, password);
+    }
     
  }
