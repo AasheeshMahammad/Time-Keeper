@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class Model {
     String usernames;
@@ -201,23 +204,34 @@ public class Model {
         String start_date="'"+x.jTextField4.getText()+"'";
         String end_date="'"+x.jTextField5.getText()+"'";
         System.out.println("username is "+usernames);
-        Statement stmt;
-        try {
-            stmt = conn.createStatement();            
-            stmt.executeUpdate("insert into tasks(username,task_name,priority,time_needed_more,start_date,end_date) values("+usernames+","+task_name+","+priority+","+time_needed+","+start_date+","+end_date+")");
-            System.out.println("Insertion to tasks succesful");
-            x.jTextField1.setText("");
-            x.jTextField2.setText("");
-            x.jTextField3.setText("");
-            x.jTextField4.setText("");
-            x.jTextField5.setText("");
-            x.jLabel7.setText("Task has been inserted");
-            
-        }
-        catch(SQLException ex)
+        LocalDate date = LocalDate.now();
+        LocalDate start_dates=LocalDate.parse((x.jTextField4.getText()));
+        LocalDate end_dates=LocalDate.parse((x.jTextField5.getText()));
+        if(!(start_dates.isAfter(date) && start_dates.isBefore(end_dates)))
         {
-            System.out.println(ex.getMessage());            
-        }    
+            x.jLabel7.setText("Please check your start date it should be after todays date and before end date");
+        }        
+        else
+        {
+            Statement stmt;
+            try {
+                stmt = conn.createStatement();            
+                stmt.executeUpdate("insert into tasks(username,task_name,priority,time_needed_more,start_date,end_date) values("+usernames+","+task_name+","+priority+","+time_needed+","+start_date+","+end_date+")");
+                System.out.println("Insertion to tasks succesful");
+                x.jTextField1.setText("");
+                x.jTextField2.setText("");
+                x.jTextField3.setText("");
+                x.jTextField4.setText("");
+                x.jTextField5.setText("");
+                x.jLabel7.setText("Task has been inserted");
+
+            }
+            catch(SQLException ex)
+            {
+                System.out.println(ex.getMessage());            
+            } 
+        }
+           
     }         
         
 
