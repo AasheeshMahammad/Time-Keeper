@@ -69,7 +69,15 @@ public class Controller {
     {
         model.viewall(x);
     }
+    public static void viewall1(Task_CRUD x) throws SQLException
+    {
+        model.viewall1(x);
+    }
     public static void viewtocrud(View_all x)
+    {
+        model.viewtocrud(x);
+    }
+    public static void viewtocrud(View_today x)
     {
         model.viewtocrud(x);
     }
@@ -78,6 +86,11 @@ public class Controller {
         model.viewprofile(x);
     }
     public static ArrayList <Data> show(View_all x) throws SQLException
+    {
+        return model.show(x);
+//        model.putinto(x);
+    }
+    public static ArrayList <Data> show(View_today x) throws SQLException
     {
         return model.show(x);
 //        model.putinto(x);
@@ -113,5 +126,5 @@ public class Controller {
     public static void deletetask(Delete_Page x)
     {
         model.deletetask(x);
-    }
+    }    
  }

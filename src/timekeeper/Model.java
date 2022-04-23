@@ -329,7 +329,18 @@ public class Model {
         new View_all().dos();
         x.close();
     }
+    public void viewall1(Task_CRUD x) throws SQLException
+    {
+        new View_today().dos();
+        x.close();
+    }
     public void viewtocrud(View_all x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+        
+    }
+    public void viewtocrud(View_today x)
     {
         new Task_CRUD().setVisible(true);
         x.close();
@@ -357,6 +368,48 @@ public class Model {
         return datalist;
     }
     public void putinto(View_all x) throws SQLException
+    {
+        ArrayList<Data> datalist=show(x);
+        System.out.println(datalist.get(0).gettime());
+        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
+        Object [] row=new Object[5];
+        for(int i=0;i<datalist.size();i++)
+        {
+            System.out.println("Ji");
+            row[0]=datalist.get(i).gettime();
+            row[1]=datalist.get(i).getname();
+            row[2]=datalist.get(i).getpriority();
+            row[3]=datalist.get(i).getstart();
+            row[4]=datalist.get(i).getend();
+            modeltable.addRow(row);
+            
+        }
+    }
+    public ArrayList <Data> show(View_today x) throws SQLException
+    {
+        ArrayList<Data> datalist=new ArrayList<>();
+        if(conset==0)
+        {
+            connect();
+            conset=1;
+        }
+        LocalDate date = LocalDate.now();
+        System.out.println("Date is "+date);
+        java.sql.Date sqlDate = java.sql.Date.valueOf( date );
+        String query="SELECT * FROM TASKS where username="+usernames+" and start_date<end_date and start_date<="+"'"+sqlDate+"'"+"and '"+sqlDate+"'<=end_date";
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        Data data;        
+        while(rs.next())
+        {
+            data=new Data(rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
+            datalist.add(data);
+        }
+        
+        return datalist;
+    }
+    public void putinto(View_today x) throws SQLException
     {
         ArrayList<Data> datalist=show(x);
         System.out.println(datalist.get(0).gettime());
@@ -490,5 +543,5 @@ public class Model {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }
+    }    
 }
