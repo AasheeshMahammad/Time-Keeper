@@ -56,13 +56,13 @@ public class Task_CRUD extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Uberlin", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(233, 213, 218));
-        jLabel1.setText("TASK CRUD");
+        jLabel1.setText("TASK Managment");
 
         jButton1.setBackground(new java.awt.Color(77, 76, 125));
         jButton1.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(233, 213, 218));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-insert-row-50.png"))); // NOI18N
-        jButton1.setText("Insert");
+        jButton1.setText("New task");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -77,7 +77,7 @@ public class Task_CRUD extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton2.setForeground(new java.awt.Color(233, 213, 218));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-update-50.png"))); // NOI18N
-        jButton2.setText("Update");
+        jButton2.setText("MODIFY");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -88,7 +88,7 @@ public class Task_CRUD extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton3.setForeground(new java.awt.Color(233, 213, 218));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-delete-50.png"))); // NOI18N
-        jButton3.setText("Delete");
+        jButton3.setText("Completed");
         jButton3.setMaximumSize(new java.awt.Dimension(191, 56));
         jButton3.setPreferredSize(new java.awt.Dimension(191, 56));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class Task_CRUD extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Uberlin", 1, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(233, 213, 218));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-50.png"))); // NOI18N
-        jButton4.setText("View All");
+        jButton4.setText("Show tasks");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -150,21 +150,26 @@ public class Task_CRUD extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162)
+                        .addGap(153, 153, 153)
                         .addComponent(jLabel1)
-                        .addGap(235, 235, 235)
+                        .addGap(244, 244, 244)
                         .addComponent(jButton5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)))
                 .addComponent(jLabel2)
                 .addGap(61, 61, 61)
                 .addComponent(jButton1)
@@ -204,8 +209,7 @@ public class Task_CRUD extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        Update_Task update_Task = new Update_Task(name);
+        Controller.updatetask(this);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

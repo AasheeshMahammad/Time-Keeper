@@ -82,4 +82,24 @@ public class Controller {
         return model.show(x);
 //        model.putinto(x);
     }
+    public static void updatetask(Task_CRUD x)
+    {
+        model.updatetask(x);
+    }
+    public static void updategetdata(Update_Task x)
+    {
+        model.updategetdata(x);
+    }
+    public static void updateselecteddisplay(Update_Task x)
+    {
+        model.updateselecteddisplay(x);
+    }
+    public static void updatetocrud(Update_Task x)
+    {
+        model.updatetocrud(x);
+    }
+    public static void updateinfo(Update_Task x)
+    {
+        model.updateinfo(x);
+    }
  }

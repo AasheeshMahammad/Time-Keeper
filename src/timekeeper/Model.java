@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -363,5 +364,93 @@ public class Model {
     {
         new Profile(usernames).setVisible(true);
         x.close();
+    }
+    public void updatetask(Task_CRUD x)
+    {
+        new Update_Task(usernames).setVisible(true);
+        x.close();
+    }
+    public void updategetdata(Update_Task x)
+    {
+        String slno=x.jTextField1.getText();
+        int slo=Integer.parseInt(slno);
+        String query="SELECT * FROM TASKS where username="+usernames+" and sl_no="+slo;
+        Statement stmt;
+        if(conset==0)
+        {
+            connect();
+            conset=1;
+        }
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next())
+            {
+                String name= rs.getString("task_name");
+                String priority= rs.getString("priority");
+                String time_needed= rs.getString("time_needed_more");
+                String start_date= rs.getString("start_date");
+                String end_date= rs.getString("end_date");
+                String []list={name,priority,time_needed,start_date,end_date};
+                DefaultListModel demoList = new DefaultListModel();
+                demoList.addElement(name);
+                demoList.addElement(priority);
+                demoList.addElement(time_needed);
+                demoList.addElement(start_date);
+                demoList.addElement(end_date);
+                x.jList1.setModel(demoList);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    public void updateselecteddisplay(Update_Task x)
+    {
+        System.out.println((String)x.jList1.getSelectedValue());
+        x.jTextField2.setText((String)x.jList1.getSelectedValue());
+    }
+    public void updatetocrud(Update_Task x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+    }
+    public void updateinfo(Update_Task x)
+    {
+        String slno=x.jTextField1.getText();
+        int slo=Integer.parseInt(slno);
+        String info = x.jTextField2.getText();
+        int index = x.jList1.getSelectedIndex();
+        String query = null;
+        if(index==0)
+        {
+            query="update tasks set task_name="+"'"+info+"'"+"where username="+usernames+" and sl_no="+slo;
+        }
+        else if(index==1)
+        {
+            query="update tasks set priority="+"'"+info+"'"+"where username="+usernames+" and sl_no="+slo;
+        }
+        else if(index==2)
+        {
+            query="update tasks set time_needed_more="+Integer.parseInt(info)+"where username="+usernames+" and sl_no="+slo;
+        }
+        else if(index==3)
+        {
+            query="update tasks set start_date="+"'"+info+"'"+"where username="+usernames+" and sl_no="+slo;
+        }
+        else if(index==4)
+        {
+            query="update tasks set end_date="+"'"+info+"'"+"where username="+usernames+" and sl_no="+slo;
+        }
+        
+        Statement stmt;
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(query);
+            x.jLabel3.setText("Updation Sucessfuly completed");
+            updategetdata(x);
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }
 }
