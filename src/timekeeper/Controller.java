@@ -102,4 +102,16 @@ public class Controller {
     {
         model.updateinfo(x);
     }
+    public static void completed(Task_CRUD x)
+    {
+        model.completed(x);
+    }
+    public static void deletetocrud(Delete_Page x)
+    {
+        model.deletetocrud(x);
+    }
+    public static void deletetask(Delete_Page x)
+    {
+        model.deletetask(x);
+    }
  }

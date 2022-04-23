@@ -453,4 +453,28 @@ public class Model {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    public void completed(Task_CRUD x)
+    {
+        new Delete_Page().setVisible(true);
+        x.close();
+    }
+    public void deletetocrud(Delete_Page x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+    }
+    public void deletetask(Delete_Page x)
+    {
+        String slno=x.jTextField1.getText();
+        String query = "DELETE FROM TASKS WHERE username="+usernames+" AND sl_no="+Integer.parseInt(slno);
+        Statement stmt;
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(query);
+            x.jLabel3.setText("Deleted the task sucessfully");
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
