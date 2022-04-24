@@ -147,8 +147,8 @@ public class View_today extends javax.swing.JFrame {
             row[5]=datalist.get(i).getend();            
             modeltable.addRow(row);            
         }
-        } catch (SQLException ex) {             
-            Logger.getLogger(View_today.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {             
+            System.out.println("No tasks");
         }
         
     }

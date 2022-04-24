@@ -349,7 +349,7 @@ public class Model {
         x.close();
         
     }
-    public ArrayList <Data> show(View_all x) throws SQLException
+    public ArrayList <Data> show(View_all x)
     {
         ArrayList<Data> datalist=new ArrayList<>();
         if(conset==0)
@@ -359,35 +359,26 @@ public class Model {
         }
         String query="SELECT * FROM TASKS where username="+usernames;
         Statement stmt;
-        stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
-        Data data;        
-        while(rs.next())
-        {
-            data=new Data(rs.getInt("sl_no"),rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
-            datalist.add(data);
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            Data data;        
+            while(rs.next())
+            {
+                data=new Data(rs.getInt("sl_no"),rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
+                datalist.add(data);
+            }
+
+            
+        } catch (Exception ex) {
+            System.out.println("No tasks");
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return datalist;
     }
-//    public void putinto(View_all x) throws SQLException
-//    {
-//        ArrayList<Data> datalist=show(x);
-//        System.out.println(datalist.get(0).gettime());
-//        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
-//        Object [] row=new Object[5];
-//        for(int i=0;i<datalist.size();i++)
-//        {
-//            System.out.println("Ji");
-//            row[0]=datalist.get(i).gettime();
-//            row[1]=datalist.get(i).getname();
-//            row[2]=datalist.get(i).getpriority();
-//            row[3]=datalist.get(i).getstart();
-//            row[4]=datalist.get(i).getend();
-//            modeltable.addRow(row);
-//            
-//        }
-//    }
+        
+    
+
     public ArrayList <Data> show(View_today x) throws SQLException
     {
         ArrayList<Data> datalist=new ArrayList<>();
@@ -411,24 +402,6 @@ public class Model {
         }        
         return datalist;
     }
-//    public void putinto(View_today x) throws SQLException
-//    {
-//        ArrayList<Data> datalist=show(x);
-//        System.out.println(datalist.get(0).gettime());
-//        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
-//        Object [] row=new Object[5];
-//        for(int i=0;i<datalist.size();i++)
-//        {
-//            System.out.println("Ji");
-//            row[0]=datalist.get(i).gettime();
-//            row[1]=datalist.get(i).getname();
-//            row[2]=datalist.get(i).getpriority();
-//            row[3]=datalist.get(i).getstart();
-//            row[4]=datalist.get(i).getend();
-//            modeltable.addRow(row);
-//            
-//        }
-//    }
     public void viewprofile(Task_CRUD x)
     {
         new Profile(usernames).setVisible(true);

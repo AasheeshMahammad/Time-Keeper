@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -126,24 +128,32 @@ public class View_all extends javax.swing.JFrame {
          new View_all().setVisible(true);
          putinto();
     }
-    public void putinto() throws SQLException
+    public void putinto()
     {
-        ArrayList<Data> datalist=Controller.show(this);
-        System.out.println(datalist.get(0).gettime());
-        DefaultTableModel modeltable=(DefaultTableModel)jTable1.getModel();
-        Object [] row=new Object[6];
-        for(int i=0;i<datalist.size();i++)
-        {
-            row[0]=datalist.get(i).getsl_no();
-            row[3]=datalist.get(i).gettime();
-            row[1]=datalist.get(i).getname();
-            row[2]=datalist.get(i).getpriority();
-            row[4]=datalist.get(i).getstart();
-            row[5]=datalist.get(i).getend();
-            modeltable.addRow(row);
+        ArrayList<Data> datalist;
+        try {
+            datalist = Controller.show(this);
+            System.out.println(datalist.get(0).gettime());
+            DefaultTableModel modeltable=(DefaultTableModel)jTable1.getModel();
+            Object [] row=new Object[6];
+            for(int i=0;i<datalist.size();i++)
+            {
+                row[0]=datalist.get(i).getsl_no();
+                row[3]=datalist.get(i).gettime();
+                row[1]=datalist.get(i).getname();
+                row[2]=datalist.get(i).getpriority();
+                row[4]=datalist.get(i).getstart();
+                row[5]=datalist.get(i).getend();
+                modeltable.addRow(row);
+            }
+        } catch (Exception ex) {
+            System.out.println("No tasks");
             
         }
-    }
+        
+            
+     }
+
     /**
      * @param args the command line arguments
      */
