@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -126,10 +128,12 @@ public class View_today extends javax.swing.JFrame {
          new View_today().setVisible(true);
          putinto();
     }
-    public void putinto() throws SQLException
+    public void putinto()
     {
-        ArrayList<Data> datalist=Controller.show(this);
-        System.out.println(datalist.get(0).gettime());
+        ArrayList<Data> datalist;
+        try {
+            datalist = Controller.show(this);
+            System.out.println(datalist.get(0).gettime());
         DefaultTableModel modeltable=(DefaultTableModel)jTable1.getModel();
         Object [] row=new Object[6];
         for(int i=0;i<datalist.size();i++)
@@ -141,9 +145,12 @@ public class View_today extends javax.swing.JFrame {
             row[2]=datalist.get(i).getpriority();
             row[4]=datalist.get(i).getstart();
             row[5]=datalist.get(i).getend();            
-            modeltable.addRow(row);
-            
+            modeltable.addRow(row);            
         }
+        } catch (SQLException ex) {             
+            Logger.getLogger(View_today.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     /**
      * @param args the command line arguments
