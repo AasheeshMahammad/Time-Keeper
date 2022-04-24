@@ -210,7 +210,7 @@ public class Model {
         LocalDate date = LocalDate.now();
         LocalDate start_dates=LocalDate.parse((x.jTextField4.getText()));
         LocalDate end_dates=LocalDate.parse((x.jTextField5.getText()));
-        if(!(start_dates.isAfter(date) && start_dates.isBefore(end_dates)))
+        if(!((start_dates.isEqual(date)||start_dates.isAfter(date)) && start_dates.isBefore(end_dates)))
         {
             x.jLabel7.setText("Please check your start date it should be after todays date and before end date");
         }        
@@ -535,12 +535,33 @@ public class Model {
     public void deletetask(Delete_Page x)
     {
         String slno=x.jTextField1.getText();
+        String query1="SELECT * FROM TASKS where username="+usernames+"and sl_no="+slno;
+        Statement stmt1;
+        int found=0;
+        try {
+            stmt1 = conn.createStatement();
+            ResultSet rs = stmt1.executeQuery(query1);
+            while(rs.next())
+            {
+                found=1;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        }       
         String query = "DELETE FROM TASKS WHERE username="+usernames+" AND sl_no="+Integer.parseInt(slno);
         Statement stmt;
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
-            x.jLabel3.setText("Deleted the task sucessfully");
+            if(found>0){
+                x.jLabel3.setText("Deleted the task sucessfully");
+            }
+            else{
+                x.jLabel3.setText("No task with given serial number");
+            }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
         }        
@@ -600,30 +621,34 @@ public class Model {
         {
             x.jLabel3.setText("No task with given serial number found");
         }
-        else{            
-                x.jLabel3.setText("Working on Task "+String.valueOf(sl_no)+"For 60 mins and break for 10 mins");            
+        else{
+            
+            x.jLabel3.setText("Working on Task "+String.valueOf(sl_no)+"For 60 mins and break for 10 mins");
+            if(!flag)
+            {
                 x.jButton2.setEnabled(false);
                 x.jButton1.setEnabled(false);
-                timers=20;
+                timers=3600;
                 Timer timer=new Timer();
                 TimerTask task= new TimerTask() {
                     @Override
                     public void run() {
-                        System.out.println("In");
-                        x.jLabel4.setText("Time Left for Break:"+covertto(timers));
-                        timers=timers-5;
+                        x.jLabel4.setText("Time Left for Break:"+covertto(timers));  
                         if(timers<=0)
                         {
-                            timer.cancel();
-                            timer.purge();                            
-                            
+                            x.jLabel4.setText("Time Left for Break: "+covertto(timers)+" Click on start again to take a break");
+                            timer.cancel();                          
+                            flag=true;
                         }
+                        timers=timers-5;
                     }
                 };
-                timer.scheduleAtFixedRate(task,0,5000);                      
+                timer.scheduleAtFixedRate(task,0,5000);                
+            }
+            else{
                 x.jButton2.setEnabled(true);
                 x.jButton1.setEnabled(true);
-                x.jLabel3.setText("Taking a break for 10 mins and timeneeded reduced by 1hr");
+                x.jLabel3.setText("Taking a break for 10 mins and timeneeded reduced by 1 hr");
                 String query1 = "update tasks set time_needed_more="+(time_needed_more-1)+"where username="+usernames+" and sl_no="+sl_no;
                 Statement stmt1;
                 try {
@@ -632,26 +657,23 @@ public class Model {
                 } catch (SQLException ex) {
                     Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                timers=10;
+                timers=600;
                 Timer timer1=new Timer();
                 TimerTask task1= new TimerTask() {
                     @Override
                     public void run() {
-                        x.jLabel4.setText("Time left in break:"+covertto(timers));
-                        timers=timers-5;
+                        x.jLabel4.setText("Time left in break:"+covertto(timers));                        
                         if(timers<=0)
                         {
-                            System.out.println("Over");
-                            timer1.cancel();
-                            timer1.purge();                            
+                            x.jLabel4.setText("Time Left for Break: "+covertto(timers)+" Click on Start again to Start Working");
+                            timer1.cancel();                                                      
                             flag=false;
                         }
+                        timers=timers-5;
                     }
                 };
                 timer1.scheduleAtFixedRate(task1,0, 5000);
-            
-            
-            
+            }
         }
     }
     public String covertto(int num)
@@ -660,7 +682,6 @@ public class Model {
         int mins=(int)num/60;
         int seconds=num%60;
         conv=conv+String.valueOf(mins)+":"+String.valueOf(seconds);
-        //System.out.println("Conv is "+conv);
         return conv;
     }
 }
