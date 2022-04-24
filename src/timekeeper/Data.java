@@ -9,16 +9,20 @@ package timekeeper;
  * @author santo
  */
 class Data {
-    private int time_needed;
+    private int time_needed,sl_no;
     private String task_name,priority,start,end;
-    public Data(int time_needed,String task_name,String priority,String start,String end)
+    public Data(int sl_no,int time_needed,String task_name,String priority,String start,String end)
     {
+        this.sl_no=sl_no;
         this.time_needed=time_needed;
         this.priority=priority;
         this.start=start;
         this.end=end;
         this.task_name=task_name;
         
+    }
+    public int getsl_no(){
+        return sl_no;
     }
     public int gettime(){
         return time_needed;

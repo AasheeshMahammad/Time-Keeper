@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Model {
     String usernames;
@@ -22,7 +24,8 @@ public class Model {
     private final String url = "jdbc:postgresql://localhost:5432/timekeeper";
     private final String user = "postgres";
     private final String password = "postgres";
-    
+    boolean flag=false;
+    int timers;
     Connection conn = null;
     public void connect() {
         
@@ -361,30 +364,30 @@ public class Model {
         Data data;        
         while(rs.next())
         {
-            data=new Data(rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
+            data=new Data(rs.getInt("sl_no"),rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
             datalist.add(data);
         }
         
         return datalist;
     }
-    public void putinto(View_all x) throws SQLException
-    {
-        ArrayList<Data> datalist=show(x);
-        System.out.println(datalist.get(0).gettime());
-        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
-        Object [] row=new Object[5];
-        for(int i=0;i<datalist.size();i++)
-        {
-            System.out.println("Ji");
-            row[0]=datalist.get(i).gettime();
-            row[1]=datalist.get(i).getname();
-            row[2]=datalist.get(i).getpriority();
-            row[3]=datalist.get(i).getstart();
-            row[4]=datalist.get(i).getend();
-            modeltable.addRow(row);
-            
-        }
-    }
+//    public void putinto(View_all x) throws SQLException
+//    {
+//        ArrayList<Data> datalist=show(x);
+//        System.out.println(datalist.get(0).gettime());
+//        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
+//        Object [] row=new Object[5];
+//        for(int i=0;i<datalist.size();i++)
+//        {
+//            System.out.println("Ji");
+//            row[0]=datalist.get(i).gettime();
+//            row[1]=datalist.get(i).getname();
+//            row[2]=datalist.get(i).getpriority();
+//            row[3]=datalist.get(i).getstart();
+//            row[4]=datalist.get(i).getend();
+//            modeltable.addRow(row);
+//            
+//        }
+//    }
     public ArrayList <Data> show(View_today x) throws SQLException
     {
         ArrayList<Data> datalist=new ArrayList<>();
@@ -403,30 +406,29 @@ public class Model {
         Data data;        
         while(rs.next())
         {
-            data=new Data(rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
+            data=new Data(rs.getInt("sl_no"),rs.getInt("time_needed_more"),rs.getString("task_name"),rs.getString("priority"),rs.getDate("start_date").toString(),rs.getDate("end_date").toString());
             datalist.add(data);
-        }
-        
+        }        
         return datalist;
     }
-    public void putinto(View_today x) throws SQLException
-    {
-        ArrayList<Data> datalist=show(x);
-        System.out.println(datalist.get(0).gettime());
-        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
-        Object [] row=new Object[5];
-        for(int i=0;i<datalist.size();i++)
-        {
-            System.out.println("Ji");
-            row[0]=datalist.get(i).gettime();
-            row[1]=datalist.get(i).getname();
-            row[2]=datalist.get(i).getpriority();
-            row[3]=datalist.get(i).getstart();
-            row[4]=datalist.get(i).getend();
-            modeltable.addRow(row);
-            
-        }
-    }
+//    public void putinto(View_today x) throws SQLException
+//    {
+//        ArrayList<Data> datalist=show(x);
+//        System.out.println(datalist.get(0).gettime());
+//        DefaultTableModel modeltable=(DefaultTableModel)x.jTable1.getModel();
+//        Object [] row=new Object[5];
+//        for(int i=0;i<datalist.size();i++)
+//        {
+//            System.out.println("Ji");
+//            row[0]=datalist.get(i).gettime();
+//            row[1]=datalist.get(i).getname();
+//            row[2]=datalist.get(i).getpriority();
+//            row[3]=datalist.get(i).getstart();
+//            row[4]=datalist.get(i).getend();
+//            modeltable.addRow(row);
+//            
+//        }
+//    }
     public void viewprofile(Task_CRUD x)
     {
         new Profile(usernames).setVisible(true);
@@ -541,7 +543,124 @@ public class Model {
             x.jLabel3.setText("Deleted the task sucessfully");
         } catch (SQLException ex) {
             Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    public void performtask(Task_CRUD x)
+    {
+        new Perform_Task().setVisible(true);
+        x.close();
+    }
+    public void performtocrud(Perform_Task x)
+    {
+        new Task_CRUD().setVisible(true);
+        x.close();
+    }
+    public void performtotodays(Perform_Task x) throws SQLException{
+        new View_today().setVisible(true);
+        x.close();
+    }
+    public void startworking(Perform_Task x) throws SQLException, InterruptedException
+    {
+        ArrayList<Data> datalist=new ArrayList<>();
+        if(conset==0)
+        {
+            connect();
+            conset=1;
         }
-        
-    }    
+        int sl_no=Integer.parseInt(x.jTextField1.getText());
+        LocalDate date = LocalDate.now();
+        System.out.println("Date is "+date);
+        java.sql.Date sqlDate = java.sql.Date.valueOf( date );
+        String query="SELECT * FROM TASKS where username="+usernames+" and start_date<end_date and start_date<="+"'"+sqlDate+"'"+"and '"+sqlDate+"'<=end_date"+" and sl_no="+sl_no;
+        Statement stmt;
+        stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        int time_needed_more=0;
+        int boo=0;
+        while(rs.next())
+        {
+            time_needed_more=rs.getInt("time_needed_more");
+            boo=1;
+        }
+        if(time_needed_more ==0 && boo==1)
+        {
+            x.jLabel3.setText("Time needed more for this task is 0 so deleting this task");
+            String query1 = "DELETE FROM TASKS WHERE username="+usernames+" AND sl_no="+sl_no;
+            Statement stmt1;
+            try {
+                stmt1 = conn.createStatement();
+                stmt1.executeUpdate(query1);
+                Thread.sleep(1000);
+                x.jLabel3.setText("Deleted the task sucessfully");
+            } catch (SQLException ex) {
+                Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        }
+        else if(boo==0)
+        {
+            x.jLabel3.setText("No task with given serial number found");
+        }
+        else{            
+                x.jLabel3.setText("Working on Task "+String.valueOf(sl_no)+"For 60 mins and break for 10 mins");            
+                x.jButton2.setEnabled(false);
+                x.jButton1.setEnabled(false);
+                timers=20;
+                Timer timer=new Timer();
+                TimerTask task= new TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("In");
+                        x.jLabel4.setText("Time Left for Break:"+covertto(timers));
+                        timers=timers-5;
+                        if(timers<=0)
+                        {
+                            timer.cancel();
+                            timer.purge();                            
+                            
+                        }
+                    }
+                };
+                timer.scheduleAtFixedRate(task,0,5000);                      
+                x.jButton2.setEnabled(true);
+                x.jButton1.setEnabled(true);
+                x.jLabel3.setText("Taking a break for 10 mins and timeneeded reduced by 1hr");
+                String query1 = "update tasks set time_needed_more="+(time_needed_more-1)+"where username="+usernames+" and sl_no="+sl_no;
+                Statement stmt1;
+                try {
+                    stmt1 = conn.createStatement();
+                    stmt1.executeUpdate(query1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                timers=10;
+                Timer timer1=new Timer();
+                TimerTask task1= new TimerTask() {
+                    @Override
+                    public void run() {
+                        x.jLabel4.setText("Time left in break:"+covertto(timers));
+                        timers=timers-5;
+                        if(timers<=0)
+                        {
+                            System.out.println("Over");
+                            timer1.cancel();
+                            timer1.purge();                            
+                            flag=false;
+                        }
+                    }
+                };
+                timer1.scheduleAtFixedRate(task1,0, 5000);
+            
+            
+            
+        }
+    }
+    public String covertto(int num)
+    {
+        String conv="";
+        int mins=(int)num/60;
+        int seconds=num%60;
+        conv=conv+String.valueOf(mins)+":"+String.valueOf(seconds);
+        //System.out.println("Conv is "+conv);
+        return conv;
+    }
 }

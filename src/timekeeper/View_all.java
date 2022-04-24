@@ -58,7 +58,7 @@ public class View_all extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Task Name", "Priority", "Time Needed", "Start_date", "End_Date"
+                "Serial_no", "Task Name", "Priority", "Time Needed", "Start_date", "End_Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -131,15 +131,15 @@ public class View_all extends javax.swing.JFrame {
         ArrayList<Data> datalist=Controller.show(this);
         System.out.println(datalist.get(0).gettime());
         DefaultTableModel modeltable=(DefaultTableModel)jTable1.getModel();
-        Object [] row=new Object[5];
+        Object [] row=new Object[6];
         for(int i=0;i<datalist.size();i++)
         {
-            System.out.println("Ji");
-            row[0]=datalist.get(i).gettime();
+            row[0]=datalist.get(i).getsl_no();
+            row[3]=datalist.get(i).gettime();
             row[1]=datalist.get(i).getname();
             row[2]=datalist.get(i).getpriority();
-            row[3]=datalist.get(i).getstart();
-            row[4]=datalist.get(i).getend();
+            row[4]=datalist.get(i).getstart();
+            row[5]=datalist.get(i).getend();
             modeltable.addRow(row);
             
         }

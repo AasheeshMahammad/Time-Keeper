@@ -126,5 +126,22 @@ public class Controller {
     public static void deletetask(Delete_Page x)
     {
         model.deletetask(x);
-    }    
+    }
+    public static void performtask(Task_CRUD x)
+    {
+        model.performtask(x);
+    }
+    public static void performtocrud(Perform_Task x)
+    {
+        model.performtocrud(x);
+    }
+    public static void performtotodays(Perform_Task x) throws SQLException
+    {
+        model.performtotodays(x);
+    }
+    public static void startworking(Perform_Task x) throws SQLException, InterruptedException
+    {
+        model.startworking(x);
+    }
+    
  }
