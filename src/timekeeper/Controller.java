@@ -88,12 +88,10 @@ public class Controller {
     public static ArrayList <Data> show(View_all x) throws SQLException
     {
         return model.show(x);
-//        model.putinto(x);
     }
     public static ArrayList <Data> show(View_today x) throws SQLException
     {
         return model.show(x);
-//        model.putinto(x);
     }
     public static void updatetask(Task_CRUD x)
     {

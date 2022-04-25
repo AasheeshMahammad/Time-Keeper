@@ -144,10 +144,13 @@ public class Model {
             conset=1;
         }
         int login_validated=main_login(username, password);
+        System.out.println("Login validted is"+login_validated);
         switch (login_validated) {
             case 1:
                 usernames=username;
                 new Task_CRUD().setVisible(true);
+                x.close();
+                break;
             case 2:
                 x.jLabel3.setText("Wrong password for given username");
                 break;
@@ -155,7 +158,7 @@ public class Model {
                 x.jLabel3.setText("No user with this username exists");
                 break;
         }
-        x.close();
+        
     }
     public void signupfinalclicked(SignUp x)
     {
@@ -601,6 +604,7 @@ public class Model {
             {
                 x.jButton2.setEnabled(false);
                 x.jButton1.setEnabled(false);
+                x.jButton3.setEnabled(false);
                 timers=3600;
                 Timer timer=new Timer();
                 TimerTask task= new TimerTask() {
@@ -610,6 +614,7 @@ public class Model {
                         if(timers<=0)
                         {
                             x.jLabel4.setText("Time Left for Break: "+covertto(timers)+" Click on start again to take a break");
+                            x.jButton3.setEnabled(true);
                             timer.cancel();                          
                             flag=true;
                         }
